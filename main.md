@@ -9,6 +9,20 @@
 #define rep(i , j , n) for(int i = j ; i <= n ; i++)
 #define red(i , n , j)  for(int i = n ; i >= j ; i--)
 
+int quickmul(int a , int b , int m){
+    return  ((a * b - (ll)(long double)(a/m*b) * m)+m)%m ;
+}
+ 
+int quickpow(int a , int b , int m){
+    int ans = 1 ;
+    while(b){
+        if(b&1) ans = quickmul(ans , a , m) ;
+        b >>= 1 ;
+        a = quickmul(a , a , m);
+    }
+    return ans ;
+}
+
 bool Miller_Rabin(int n){
     if(n == 46856248255981ll || n < 2) return false;
     if(n == 2 || n == 3 || n == 7 || n == 61 || n == 24251) return true;
