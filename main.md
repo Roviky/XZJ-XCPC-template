@@ -1,3 +1,31 @@
+## 基于随机的大质数判断
+
+### Miller_Rabin
+
+利用费马小定理和随机数进行伪验证，时间复杂度为 $O(n^{1/4})$ 。
+
+```C
+
+bool Miller_Rabin(int n){
+    if(n == 46856248255981ll || n < 2) return false;
+    if(n == 2 || n == 3 || n == 7 || n == 61 || n == 24251) return true;
+    if(!(n&1) || !(n%3) || !(n%61) || !(n%24251)) return false;
+    int m = n - 1 , k = 0 ;
+    while(!(m&1)) k++ , m>>=1 ;// 分解2^s * t = n - 1
+    rep(i , 1 , 20){
+        int a = rand() % (n - 1) + 1 , x =  quickpow(a , m , n) , y;
+        rep(j , 1 , k){
+            y = quickmul(x , x , n);
+            if(y == 1 && x != 1 && x != n - 1) return false;//二次测探
+            x = y ;
+        }
+        if(y != 1) return false;//费马小定理
+    }
+    return true;
+}
+
+```
+
 ## 博弈论
 ### 巴什博弈
 **定义**：一堆n个物品，两个人轮流从中取出不多于m个，最后取光者胜，不能继续取的人输；
