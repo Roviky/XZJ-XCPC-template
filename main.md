@@ -56,7 +56,7 @@ int main(){
 ```
 
 ## FFT
-这里是用的是基于递归的写法，常数更优秀。FFT利用单位根的性质进行分治，可以在 O(nlogn) 的时间内完成DFT和IDFT。
+这里是用的是基于分治的写法，常数更优秀。FFT利用单位根的性质进行分治，可以在 O(nlogn) 的时间内完成DFT和IDFT。
 
 ```C
 #include<bits/stdc++.h>
