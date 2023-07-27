@@ -6,6 +6,9 @@
 
 ```C
 
+#define rep(i , j , n) for(int i = j ; i <= n ; i++)
+#define red(i , n , j)  for(int i = n ; i >= j ; i--)
+
 bool Miller_Rabin(int n){
     if(n == 46856248255981ll || n < 2) return false;
     if(n == 2 || n == 3 || n == 7 || n == 61 || n == 24251) return true;
