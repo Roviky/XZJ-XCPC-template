@@ -36,12 +36,12 @@
 **代码实现**
 
 ```C
-	int r=0;
-	for(int i=1;i<=n;++i){
-		r=r^a[i];
-	} 
-	if(r) return true;
-	else return false;
+int r=0;
+for(int i=1;i<=n;++i){
+	r=r^a[i];
+} 
+if(r) return true;
+else return false;
 
 ```
 #### SG函数
