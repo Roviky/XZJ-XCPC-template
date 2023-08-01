@@ -1,3 +1,37 @@
+## 组合数、阶乘、逆元
+
+```C
+
+const int mod=998244353; 
+long long ksm(long long a,long long b){
+	long long res=1;
+	while(b){
+		if(b&1){
+			res=res*a%mod;
+		}
+		a=a*a%mod;
+		b>>=1;
+	}
+	return res;
+}
+long long f[1011111],inv[1011111];
+long long dp[1011111];
+long long C(int m,int n){
+	return (f[n]*inv[m]%mod)*inv[n-m]%mod;
+}
+
+f[0]=1;
+for(int i=1;i<=1001111;i++){
+	f[i]=f[i-1]*i%mod;
+}
+inv[1001111] = ksm(f[1001111],mod-2);
+for(int i=1001110;i>=0;i--){
+	inv[i]=inv[i+1]*(i+1)%mod;
+}
+
+```
+
+
 ## 基于随机的大质数判断
 
 ### Miller_Rabin
